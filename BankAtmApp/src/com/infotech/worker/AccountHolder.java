@@ -1,7 +1,7 @@
 package com.infotech.worker;
 
 import com.infotech.model.Account;
-
+import java.util.*;
 public class AccountHolder implements Runnable {
 	private Account account;
 
@@ -11,7 +11,10 @@ public class AccountHolder implements Runnable {
 
 	@Override
 	public void run() {
-		for (int i = 1; i <= 4; i++) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the number of withdrawls");
+		int noOfWithdrawls = sc.nextInt();
+		for (int i = 1; i <= noOfWithdrawls; i++) {
 			makeWithdrawal(2000);
 			if (account.getBalance() < 0) {
 				System.out.println("account is overdrawn!");
